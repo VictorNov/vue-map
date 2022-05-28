@@ -284,11 +284,6 @@ export default {
     // При закрытии балуна меняем иконку объекта на неактивную
     onBalloonClose() {
       this.setActivePlacemark(false)
-    },
-
-    // Закрываем балун метки по id
-    closeBalloon(id) {
-      this.objectManager.objects.balloon.close( id )
     }
   },
   // При монтировании настраиваем API и передаем объект ymaps функции this.init()
@@ -300,16 +295,12 @@ export default {
   },
   watch: {
     // Наблюдаем изменение текущей страны, фильтруем объекты на карте
-    // Закрываем открытый балун
     currentCountry( newValue ) {
       this.filterCollectionByCountry(newValue)
-      this.closeBalloon(this.currentOffice?.id)
     },
     // Наблюдаем изменение текущего города и фокусируем объекты на карте
-    // Закрываем открытый балун
     currentCity( newValue ) {
       this.filterCollectionByCity(newValue)
-      this.closeBalloon(this.currentOffice?.id)
     },
     // Наблюдаем изменение текущего офиса и фокусируем карту на конкретном офисе
     currentOffice( newValue ) {
